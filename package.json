@@ -4,5 +4,23 @@
   "main": "index.js",
   "repository": "https://github.com/irislib/iris-store",
   "author": "Martti Malmi <sirius@iki.fi>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "@peculiar/webcrypto": "^1.1.4",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "gun": "amark/gun",
+    "iris-lib": "^0.0.152",
+    "jsonrpc-lite": "^2.2.0",
+    "node-fetch": "^2.6.1",
+    "text-encoding": "^0.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.15.0",
+    "nodemon": "^2.0.6"
+  }
 }

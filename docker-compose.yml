@@ -1,9 +1,32 @@
-  # electrum :D
+version: '3'
+
+services:
   electrum:
-    image: irislib/electrum
+    image: irislib/electrum:latest
     ports:
       - 127.0.0.1:7000:7000
     environment:
-      ELECTRUM_USER: electrum
-      ELECTRUM_PASSWORD: changeme
-      TESTNET: False
+      ELECTRUM_USER: "${ELECTRUM_USER}"
+      ELECTRUM_PASSWORD: "${ELECTRUM_PASSWORD}"
+      TESTNET: "${TESTNET}"
+      XPUB: "${XPUB}"
+  iris-store:
+    build:
+      context: .
+      target: iris-store
+    container_name: iris-store
+    image: iris-store
+    environment:
+      IRIS_PRIVATE_KEY: "${IRIS_PRIVATE_KEY}"
+      GUN_OPTS: "${GUN_OPTS}"
+  iris-store-dev:
+    build:
+      context: .
+      target: iris-store-dev
+    container_name: iris-store-dev
+    image: iris-store-dev
+    volumes:
+      - ./:/app/
+    environment:
+      IRIS_PRIVATE_KEY: "${IRIS_PRIVATE_KEY}"
+      GUN_OPTS: "${GUN_OPTS}"
